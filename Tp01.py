@@ -4,10 +4,7 @@ import pandas as pd
 
 
 def scrape_quotes(base_url="http://quotes.toscrape.com"):
-    """
-    دالة لجلب جميع الاقتباسات من موقع quotes.toscrape.com
-    وترجع قائمة من القواميس تحتوي (quote, author, tags, source)
-    """
+
     all_quotes = []
     page_url = "/page/1/"
 
@@ -15,14 +12,12 @@ def scrape_quotes(base_url="http://quotes.toscrape.com"):
         response = requests.get(base_url + page_url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # كل اقتباس داخل div class="quote"
         quotes_blocks = soup.find_all("div", class_="quote")
 
         for block in quotes_blocks:
             quote_text = block.find("span", class_="text").get_text()
             author = block.find("small", class_="author").get_text()
 
-            # استخراج الوسوم (tags)
             tags = [tag.get_text() for tag in block.find_all("a", class_="tag")]
             tags_joined = ", ".join(tags) if tags else "No tags"
 
@@ -33,7 +28,6 @@ def scrape_quotes(base_url="http://quotes.toscrape.com"):
                 "source": base_url
             })
 
-        # الانتقال للصفحة التالية إن وُجدت
         next_button = soup.find("li", class_="next")
         page_url = next_button.a["href"] if next_button else None
 
