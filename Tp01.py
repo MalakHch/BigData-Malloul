@@ -38,7 +38,7 @@ def main():
     quotes = scrape_quotes()
     df = pd.DataFrame(quotes)
     df.to_csv("all_quotes_with_tags.csv", index=False, encoding="utf-8")
-    print(f"✅ تم حفظ {len(quotes)} اقتباس في all_quotes_with_tags.csv")
+    print(f" {len(quotes)}  all_quotes_with_tags.csv Done")
 
 
 if __name__ == "__main__":
