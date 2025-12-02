@@ -1,0 +1,63 @@
+use info
+
+To add (exemple):
+db.produits.insertOne({
+  nom: "Thinkpad X230",
+  fabriquant: "Lenovo",
+  prix: 114358.74,
+  ultrabook: true,
+  options: ["Intel Core i5", "SSD", "Long life battery"]
+})
+
+To display All:
+db.produits.find().pretty()
+
+To display The firstOne:
+db.produits.findOne()
+
+To display with conditions (searching):
+
+Price greater than 13723:
+db.produits.find({ prix: { $gt: 13723 } }).pretty()
+
+First Ultrabook:
+db.produits.findOne({ ultrabook: true })
+
+Name contains "Macbook":
+db.produits.find({ nom: /Macbook/ }).pretty()
+
+Name starts with "Macbook":
+db.produits.find({ nom: /^Macbook/ }).pretty()
+
+Delete All Apple product:
+db.produits.deleteMany({ fabriquant: "Apple" })
+
+Searching by fabricant (example Lenovo):
+db.produits.find({ fabriquant: "Lenovo" }).pretty()
+
+Delete one (by _id):
+db.produits.deleteOne({ _id: ObjectId("6913877de0ce55689c63b112") })
+
+Extra commands (useful):
+
+Insert many products at once:
+db.produits.insertMany([
+  { nom: "Acer Swift 3", fabriquant: "Acer", prix: 60000 },
+  { nom: "Asus ZenBook", fabriquant: "Asus", prix: 85000 }
+])
+
+Update one element:
+db.produits.updateOne(
+  { nom: "Dell XPS 13" },
+  { $set: { prix: 99000 } }
+)
+
+Delete all documents in the collection:
+db.produits.deleteMany({})
+
+Delete entire collection:
+db.produits.drop()
+
+Show all collections in the current database:
+show collections
+
