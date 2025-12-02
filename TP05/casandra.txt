@@ -1,0 +1,13 @@
+SELECT COUNT(*) FROM Restaurant;
+SELECT COUNT(*) FROM Inspection;
+SELECT * FROM Restaurant;    to limit the result i used     SELECT * FROM Restaurant LIMIT 20;
+SELECT name FROM Restaurant;         to limit the result i used       SELECT name FROM Restaurant LIMIT 20;
+SELECT name, cuisinetype FROM Restaurant;          
+SELECT * FROM Restaurant WHERE borough='MANHATTAN' ALLOW FILTERING;
+SELECT name, borough FROM Restaurant WHERE id=41569764;
+SELECT inspectiondate, grade FROM Inspection WHERE idrestaurant=41569764;
+SELECT name FROM Restaurant WHERE cuisinetype='French' ALLOW FILTERING;
+SELECT name FROM Restaurant WHERE borough='BROOKLYN' ALLOW FILTERING;
+SELECT grade, score FROM Inspection WHERE idrestaurant=41569764 AND score>=10 ALLOW FILTERING;
+SELECT COUNT(*) FROM Inspection WHERE score > 30 AND grade >= ' ' ALLOW FILTERING;
+
